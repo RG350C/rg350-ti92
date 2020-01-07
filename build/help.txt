@@ -1,0 +1,182 @@
+
+Welcome to WIZ-TI92
+
+1. INTRODUCTION
+------------
+
+Tiger is a TI-92 emulator for Linux/x86.  It was
+originally written by Jonas Minnberg and was closed
+source.  There were two versions: the SVGA version
+and an Xlib version.  Jonas Minnberg has not worked
+on XTiger for quite a while and he gave Misha
+Nasledov the code and permission to GPL it.
+
+WIZ-TI92 is port on WIZ of the latest Xtiger
+version.
+
+This package is under GPL Copyright, read COPYING
+file for more information about it.
+
+2. CONTROL
+------------
+
+2.1 - Virtual keyboard
+
+In the editor window, press Select to open/close the
+On-Screen keyboard.
+
+Use Analog stick to choose one of the 9 squares, and
+use Y, A, Cross and B to choose one of the 4 letters
+of the highlighted square.
+
+Select  Disable virtual keyboard
+L/R     Navigate between different keyboard panels 
+
+2.2 - Standard keys
+
+In the TI92 emulator window, there are three
+different mapping (standard, left trigger, and right
+Trigger mappings).  You can toggle between while
+playing inside the emulator using the two trigger
+keys.
+
+    -------------------------------------
+    WIZ        TI-92          (standard)
+  
+    A           Backspace
+    B           Space 
+    Y           Escape 
+    X           Enter1
+    Up          Up
+    Down        Down
+    Left        Left
+    Right       Right
+
+    -------------------------------------
+    WIZ        TI-92    (left)
+
+    A           Apps   
+    B           Diamond 
+    Y           Hand   
+    X           2nd   
+    Up          F1
+    Down        F2  
+    Left        F3   
+    Right       F4   
+
+    -------------------------------------
+    WIZ        TI-92    (right)
+
+    A           (     
+    B           )    
+    Y           Diamond
+    X           ,     
+    Up          Up
+    Down        Down
+    Left        Left
+    Right       Right
+
+Press Menu   to enter in emulator main menu.
+Press Select open/close the On-Screen keyboard
+
+  In the main menu
+
+    RTrigger   Reset the emulator
+
+    Y   Go Up directory
+    X   Valid
+    B   Valid
+    A   Go Back to the emulator window
+
+
+3.3 Touch screen
+
+This version supports the touch screen.
+
+3.3.1 - On the virtual keyboard panel
+
+Using the touch screen you can click on the letter
+you want, and drawing a line vertically or
+horizontally (on the virtual keyboard screen) you
+can navigate between the different keyboard panels.
+
+3.3.2 - Editor menu 
+
+The touch screen can be used to move the cursor on a
+position with a simple click. And then you can :
+
+draw a line up    : page up
+draw a line down  : page down
+draw a line left  : first column of the current line
+draw a line right : last column of the current line
+
+3.3.3 - Main menu
+
+You can select the line you want and click to select
+the option you want.
+
+3.3.4 - File requester menu
+
+You can use the virtual keyboard as previously
+described.  If you press the touch screen in the
+first line, current selection goes up, and if you
+press the touch screen in the last line, current
+selection goes down. You can draw a line left /
+right to do page up / down.
+
+You can open the file you want by a simple click.
+
+3.3.5 - Help menu
+
+draw a line up/left     : page up
+draw a line down/right  : page down
+
+3.3.6 - Settings menu
+
+You can select the line you want and click to select
+the option you want. Just click on left or right
+part of the menu option name to respectively
+decrease or increase its value.
+
+3.3.7 - Emulator window
+
+You can use the virtual keyboard as previously
+described.
+
+
+4. LOADING TI-92 APPLICATION FILES
+------------
+
+You can save any TI 92 files (with .92* file
+extension) on your SD memory. 
+
+It may happen that the file is not properly loaded,
+and so you have to try again.
+
+To manage applications already loaded in your TI-92,
+you can use the VLINK menu.
+
+You can find many applications on
+http://www.ticalc.org/ and on the official TI ftp
+site ftp://ftp.ti.com/pub/graph-ti/calc-apps/92/
+
+
+5. LOADING KEY MAPPING FILES
+------------
+
+If you want to modify the default keyboard mapping
+between WIZ Keys and TI-92 keys you can write your
+own mapping file and put them in kbd folder.
+
+6. COMPILATION
+ ------------
+
+It has been developped under Linux FC9 using gcc
+with WIZ SDK.  All tests have been done using a
+GP2X-Wiz with FW 1.1.0.  To rebuild the homebrew run
+the Makefile in the src archive.
+
+
+   Enjoy,
+
+         Zx

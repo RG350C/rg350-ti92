@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ti92
+Comment=Texas Instrument 92 calculator emulator 
+Exec=ti92.dge
+Terminal=false
+Type=Application
+MimeType=application/x-a78;
+StartupNotify=true
+Icon=icon
+Categories=applications;
+X-OD-Manual=readme.txt

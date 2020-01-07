@@ -1,0 +1,87 @@
+# Define compilation type
+#OSTYPE=msys
+#OSTYPE=oda320
+OSTYPE=odgcw0
+
+# define regarding OS, which compiler to use
+PRGNAME     	= rg350-ti92
+TI92_VERSION	= 1.1.0
+
+ifeq "$(OSTYPE)" "msys"	
+	EXESUFFIX = .exe
+	TOOLCHAIN = /c/MinGW32
+	CC          = gcc
+	LD          = gcc
+else
+	ifeq "$(OSTYPE)" "oda320"	
+		TOOLCHAIN = /opt/opendingux-toolchain/usr
+	else
+		TOOLCHAIN = /opt/gcw0-toolchain/usr
+	endif
+EXESUFFIX = .dge
+	CC = $(TOOLCHAIN)/bin/mipsel-linux-gcc
+	LD = $(TOOLCHAIN)/bin/mipsel-linux-gcc
+endif
+
+# add SDL dependencies
+SDL_LIB     = $(TOOLCHAIN)/lib
+SDL_INCLUDE = $(TOOLCHAIN)/include
+
+# change compilation / linking flag options
+ifeq "$(OSTYPE)" "msys"	
+	F_OPTS =
+	CFLAGS      = -I$(SDL_INCLUDE) -O2 -D_VIDOD32_ $(F_OPTS)
+	LDFLAGS     = -L$(SDL_LIB) -L. -lmingw32 -lSDLmain -lSDL -lSDL_image -mwindows
+else
+	F_OPTS = -falign-functions -falign-loops -falign-labels -falign-jumps \
+		-ffast-math -fsingle-precision-constant -funsafe-math-optimizations \
+		-fomit-frame-pointer -fno-builtin -fno-strength-reduce -fno-common \
+		-fstrict-aliasing  -fexpensive-optimizations \
+		-finline -finline-functions -fpeel-loops
+
+	ifeq "$(OSTYPE)" "oda320"	
+		CC_OPTS	= -O3 -mips32 -msoft-float -G0 -D_OPENDINGUX_ -DDINGUX_MODE -D_VIDOD16_ $(F_OPTS) -DINTEL_FLAG_OPT -DNO_STDIO_REDIRECT -DTI92_VERSION=\"$(TI92_VERSION)\" 
+	else
+		CC_OPTS	= -O3 -mips32 -mhard-float -G0 -D_OPENDINGUX_ -DDINGUX_MODE -D_VIDOD32_ $(F_OPTS) -DINTEL_FLAG_OPT -DNO_STDIO_REDIRECT -DTI92_VERSION=\"$(TI92_VERSION)\" 
+	endif
+
+	CFLAGS      = -I$(SDL_INCLUDE) -DOPENDINGUX $(CC_OPTS)
+	LDFLAGS     = -L$(SDL_LIB) $(CC_OPTS) -lSDL -lSDL_image -lSDL_mixer -lpthread -lpng -ldl -lz -lm
+	#   -static -s
+endif
+
+# Files to be compiled
+SRCDIR    = ./emu/zlib  ./emu ./opendingux
+VPATH     = $(SRCDIR)
+SRC_C   = $(foreach dir, $(SRCDIR), $(wildcard $(dir)/*.c))
+OBJ_C   = $(notdir $(patsubst %.c, %.o, $(SRC_C)))
+
+# Files to be compiled
+OBJS = emu/gp2x_psp.o \
+emu/cpudingux.o \
+emu/psp_main.o emu/ti92_main.o emu/psp_danzeff.o \
+emu/psp_menu.o \
+emu/psp_editor.o \
+emu/psp_menu_set.o \
+emu/psp_menu_kbd.o emu/psp_menu_help.o \
+emu/newcpu.o emu/memory.o emu/hardware.o emu/packets.o emu/keyboard.o \
+emu/readcpu.o emu/cpudefs.o emu/cpu0.o emu/cpu1.o emu/cpu2.o emu/cpu3.o emu/cpu4.o emu/cpu5.o emu/cpu6.o \
+emu/cpu7.o emu/cpu8.o emu/cpu9.o emu/cpuA.o emu/cpuB.o emu/cpuC.o emu/cpuD.o emu/cpuE.o emu/cpuF.o \
+emu/cpustbl.o emu/noasm.o emu/psp_kbd.o emu/psp_sdl.o emu/psp_fmgr.o \
+emu/psp_font.o \
+emu/global.o emu/psp_specific.o emu/ti_main.o
+
+
+# Rules to make executable
+$(PRGNAME)$(EXESUFFIX): $(OBJS)  
+ifeq "$(OSTYPE)" "msys"	
+	$(LD) $(CFLAGS) -o $(PRGNAME)$(EXESUFFIX) $^ $(LDFLAGS)
+else
+	$(LD) $(LDFLAGS) -o $(PRGNAME)$(EXESUFFIX) $^
+endif
+
+$(OBJ_C) : %.o : %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+clean:
+	rm -f $(PRGNAME)$(EXESUFFIX) emu/*.o
