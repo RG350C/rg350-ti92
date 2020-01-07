@@ -1,5 +1,4 @@
-
-Welcome to CAANOO-TI92
+Welcome to RG350-TI92
 
 Original Author of XTiger
 
@@ -27,7 +26,7 @@ XTiger : TI 92 Emulator for Unix/X11
 
 # INTRODUCTION
 
-  This is a port on CAANOO of the Texas Instrument 92 emulator for X Window Systems : Xtiger.
+  This is a port on RG350 of the Texas Instrument 92 emulator for X Window Systems : Xtiger.
 
   This package is under GPL Copyright, read COPYING file for more information about it.
 
@@ -60,7 +59,7 @@ XTiger : TI 92 Emulator for Unix/X11
   playing inside the emulator using the two trigger keys.
 
   -------------------------------------
-  CAANOO        TI-92          (standard)
+  RG350        TI-92          (standard)
   
     A           Backspace
     B           Space 
@@ -72,7 +71,7 @@ XTiger : TI 92 Emulator for Unix/X11
     Right       Right
 
   -------------------------------------
-  CAANOO        TI-92    (left)
+  RG350        TI-92    (left)
 
     A           Apps   
     B           Diamond 
@@ -84,7 +83,7 @@ XTiger : TI 92 Emulator for Unix/X11
     Right       F4   
 
   -------------------------------------
-  CAANOO        TI-92    (right)
+  RG350        TI-92    (right)
 
     A           (     
     B           )    
@@ -165,17 +164,18 @@ XTiger : TI 92 Emulator for Unix/X11
 
 # LOADING KEY MAPPING FILES
 
-  If you want to modify the default keyboard mapping between CAANOO Keys and TI-92 keys you can write your own mapping file. Using notepad for example you can edit a file with the .kbd extension and put it in the kbd directory.
+  If you want to modify the default keyboard mapping between RG350 Keys and TI-92 keys you can write your own mapping file. Using notepad for example you can edit a file with the .kbd extension and put it in the kbd directory.
 
   After writting such keyboard mapping file, you can load them using the keyboard menu.
 
 
 # COMPILATION
 
-  It has been developped under Linux FC9 using gcc with CAANOO SDK. 
+  It has been developped under Linux FC9 using gcc with GCW0 SDK.  All tests have been done using a RG350.  To rebuild the homebrew run the Makefile in the src archive.
 
-  To rebuild the homebrew run the Makefile in the src archive.
 
   Enjoy,
   
          Zx
+
+
